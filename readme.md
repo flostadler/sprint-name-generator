@@ -11,4 +11,4 @@ To generate a sprint name, browse to `localhost:"PORT"/generate`
 
 ## Images
 
-Prebuilt image available in [Dockerhub](https://hub.docker.com/r/flostadler/sprint-name-generator)
+Prebuilt image available at [Dockerhub](https://hub.docker.com/r/flostadler/sprint-name-generator)
