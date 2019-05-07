@@ -1,0 +1,16 @@
+package docker
+
+import (
+	"github.com/docker/docker/pkg/namesgenerator"
+	"strings"
+)
+
+func Generate() string {
+	nameParts := strings.Split(namesgenerator.GetRandomName(0), "_")
+
+	for i := 0; i < len(nameParts); i++ {
+		nameParts[i] = strings.Title(nameParts[i])
+	}
+
+	return strings.Join(nameParts, " ")
+}
