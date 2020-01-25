@@ -14,3 +14,12 @@ func Generate() string {
 
 	return strings.Join(nameParts, " ")
 }
+
+func GenerateMultiple(count int) []string {
+	s := make([]string, count)
+	for i := 0;  i <= count; i++ {
+		s[i] = Generate()
+	}
+
+	return s
+}
