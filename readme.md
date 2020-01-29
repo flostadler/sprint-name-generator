@@ -1,5 +1,5 @@
 # Sprint-Name-Generator
-tbd
+[Sprint Name Generator](https://sprintnamegenerator.com)
 
 ## Building
 tbd
