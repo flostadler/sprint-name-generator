@@ -7,7 +7,6 @@ const animateLinearClass = 'animate-linear';
 const animationTiming = {
     EASE: 'ease',
     LINEAR: 'linear',
-    
 };
 
 /**
