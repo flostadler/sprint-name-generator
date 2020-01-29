@@ -28,10 +28,7 @@ jobs:
       run: go build -v -o name-gen github.com/flostadler/name-generator/cmd/name-generator
 
     - name: Build wasm
-      run: GOOS=js GOARCH=wasm go build -o generator.wasm github.com/flostadler/name-generator/cmd/web
+      run: GOOS=js GOARCH=wasm go build -o web/generator.wasm github.com/flostadler/name-generator/cmd/web
       
-    - name: Upload wasm
-      uses: actions/upload-artifact@v1
-      with:
-        name: generator.wasm
-        path: generator.wasm
+    - name: Copy wasm_exec
+      run: cp $HOME/go/misc/wasm/wasm_exec.js web/wasm_exec.js
