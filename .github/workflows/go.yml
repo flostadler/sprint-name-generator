@@ -1,5 +1,8 @@
-name: Go
-on: [push]
+name: Build and Deploy sprintnamegenerator.com
+on:
+  push:
+    branches:
+      - master
 jobs:
 
   build:
