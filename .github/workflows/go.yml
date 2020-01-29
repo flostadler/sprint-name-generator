@@ -25,4 +25,4 @@ jobs:
         fi
 
     - name: Build
-      run: go build -v -o name-gen /cmd/name-generator
+      run: go build -v -o name-gen github.com/flostadler/name-generator/cmd/name-generator
