@@ -32,3 +32,16 @@ jobs:
       
     - name: Copy wasm_exec
       run: cp $GOROOT/misc/wasm/wasm_exec.js web/wasm_exec.js
+      
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+
+    - run: npm install
+      working-directory: ./web
+      
+    - run: npm run build --if-present
+      working-directory: ./web
+      env:
+        CI: true
