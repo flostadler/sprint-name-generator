@@ -24,5 +24,14 @@ jobs:
             dep ensure
         fi
 
-    - name: Build
+    - name: Build api
       run: go build -v -o name-gen github.com/flostadler/name-generator/cmd/name-generator
+
+    - name: Build wasm
+      run: GOOS=js GOARCH=wasm go build -o generator.wasm github.com/flostadler/name-generator/cmd/web
+      
+    - name: Upload wasm
+      uses: actions/upload-artifact@v1
+      with:
+        name: generator.wasm
+        path: generator.wasm
