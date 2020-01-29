@@ -31,4 +31,4 @@ jobs:
       run: GOOS=js GOARCH=wasm go build -o web/generator.wasm github.com/flostadler/name-generator/cmd/web
       
     - name: Copy wasm_exec
-      run: cp $HOME/go/misc/wasm/wasm_exec.js web/wasm_exec.js
+      run: cp $GOROOT/misc/wasm/wasm_exec.js web/wasm_exec.js
