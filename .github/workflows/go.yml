@@ -45,3 +45,10 @@ jobs:
       working-directory: ./web
       env:
         CI: true
+    
+    - name: Deploy Page
+      uses: JamesIves/github-pages-deploy-action@releases/v3
+      with:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: web/build
