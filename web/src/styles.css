@@ -1,0 +1,202 @@
+:root {
+    --animationMovementUp: translate3d(0, -100%, 0);
+    --animationMovementDown: translate3d(0, 100%, 0);
+    --animationDuration: 0.5s;
+    --animationDurationFast: 0.1s;
+    --categorySize: 200px;
+}
+
+html {
+    font-family: sans-serif;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.9);
+    background-color: #1F2833;
+}
+
+@media screen and (min-width: 320px) {
+    html {
+        font-size: calc(12px + (25 - 12) * ((100vw - 320px) / 680));
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    html {
+        font-size: 25px;
+    }
+}
+
+#textcontainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    margin-top: 200px;
+    margin-bottom: 200px;
+}
+
+h1 {
+    font-size: 3rem;
+    position: absolute;
+    margin: 0;
+    font-family: Proza Libre, "serif";
+}
+
+h1.hidden {
+    display: none;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+#popup {
+    position: absolute;
+    opacity: 0;
+}
+
+
+.categories {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Open Sans, "sans-serif";
+    height: var(--categorySize);
+    width: var(--categorySize);
+    border: 3px solid rgba(255, 255, 255, 0.9);
+    margin: 20px;
+    transition: background-color 0.2s;
+}
+
+.category .icon {
+    font-size: 50px;
+    margin-bottom: 0.5em;
+}
+
+.category .title {
+    font-size: 30px;
+}
+
+.category:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+}
+
+.category:active {
+    background-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(4px);
+}
+
+
+.fade-in-down {
+    animation-name: fadeInDown;
+    animation-duration: var(--animationDuration);
+}
+
+.fade-out-down {
+    opacity: 0;
+    animation-name: fadeOutDown;
+    animation-duration: var(--animationDuration);
+}
+
+.popup-show {
+    animation-name: popupShow;
+    animation-duration: var(--animationDuration);
+}
+
+.animate-100 {
+    animation-duration: 100ms;
+}
+
+.animate-200 {
+    animation-duration: 200ms;
+}
+
+.animate-300 {
+    animation-duration: 300ms;
+}
+
+.animate-400 {
+    animation-duration: 400ms;
+}
+
+.animate-500 {
+    animation-duration: 500ms;
+}
+
+.animate-600 {
+    animation-duration: 600ms;
+}
+
+.animate-700 {
+    animation-duration: 700ms;
+}
+
+.animate-800 {
+    animation-duration: 800ms;
+}
+
+.animate-900 {
+    animation-duration: 900ms;
+}
+
+.animate-1000 {
+    animation-duration: 1000ms;
+}
+
+.animate-1500 {
+    animation-duration: 1500ms;
+}
+
+.animate-2000 {
+    animation-duration: 2000ms;
+}
+
+.animate-linear {
+    animation-timing-function: linear;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: var(--animationMovementUp);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes fadeOutDown {
+    from {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+    to {
+        opacity: 0;
+        transform: var(--animationMovementDown);
+    }
+}
+
+@keyframes popupShow {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, -100%, 0);
+    }
+    50% {
+        opacity: 1;
+        transform: translate3d(0, -220%, 0);
+    }
+    100% {
+        opacity: 0;
+        transform: translate3d(0, -100%, 0);
+    }
+}

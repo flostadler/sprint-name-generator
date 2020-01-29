@@ -17,3 +17,7 @@
 # Jetbrains
 .idea
 
+web/node_modules
+web/build
+web/generator.wasm
+web/wasm_exec.js
