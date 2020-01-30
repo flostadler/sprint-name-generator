@@ -206,11 +206,21 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        document.getElementsByClassName("category beer")[0].addEventListener("click", generateNames(NameGenerator.animal), false);
-        document.getElementsByClassName("category movies")[0].addEventListener("click", generateNames(NameGenerator.dockerName), false);
-        document.getElementsByClassName("category food")[0].addEventListener("click", generateNames(NameGenerator.marvelCharacter), false);
-        //NameGenerator.dcCharacter
-        //NameGenerator.got
+        document
+            .getElementsByClassName("category animal")[0]
+            .addEventListener("click", generateNames(NameGenerator.animal), false);
+        document
+            .getElementsByClassName("category docker")[0]
+            .addEventListener("click", generateNames(NameGenerator.dockerName), false);
+        document
+            .getElementsByClassName("category marvel")[0]
+            .addEventListener("click", generateNames(NameGenerator.marvelCharacter), false);
+        document
+            .getElementsByClassName("category dc")[0]
+            .addEventListener("click", generateNames(NameGenerator.dcCharacter), false);
+        document
+            .getElementsByClassName("category game-of-thrones")[0]
+            .addEventListener("click", generateNames(NameGenerator.got), false);
 
         addToQueue([
             {
