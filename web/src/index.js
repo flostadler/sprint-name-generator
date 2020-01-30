@@ -1,8 +1,12 @@
 const mainShowClass = 'fade-in-down';
 const popupShowClass = 'popup-show';
+const clipShowClass = 'clip-show';
+const checkShowClass = 'check-show';
 const mainHideClass = 'fade-out-down';
 const durationClassPrefix = 'animate-';
 const animateLinearClass = 'animate-linear';
+
+const popupDurationMs = 700;
 
 const animationTiming = {
     EASE: 'ease',
@@ -81,6 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 queueRunning = false;
                 if (next.copyToClipboard) {
                     let currentEl = getCurrentTextEl();
+                    currentEl.title = "Copy to Clipboard";
                     currentEl.addEventListener("click", copyToClipboard(currentEl), false);
                     currentEl.classList.add("pointer");
                 }
@@ -230,15 +235,22 @@ document.addEventListener('DOMContentLoaded', function () {
             },
         ]);
 
-        const animationDurationMs = parseFloat(window.getComputedStyle(document.querySelector(':root')).getPropertyValue('--animationDuration')) * 1000;
+        let popupEl = document.getElementById('popup');
 
         function copyToClipboard(el) {
             return () => {
                 navigator.clipboard.writeText(el.innerText).then(function () {
-                    document.getElementById('popup').classList.add(popupShowClass);
-                    timeout(animationDurationMs).then(() =>
-                        document.getElementById('popup').classList.remove(popupShowClass)
-                    );
+                    popupEl.classList.add(`${durationClassPrefix}${popupDurationMs}`);
+                    popupEl.classList.add(popupShowClass);
+                    popupEl.children[0].classList.add(`${durationClassPrefix}${popupDurationMs}`);
+                    popupEl.children[0].classList.add(clipShowClass);
+                    popupEl.children[1].classList.add(`${durationClassPrefix}${popupDurationMs}`);
+                    popupEl.children[1].classList.add(checkShowClass);
+                    timeout(popupDurationMs).then(() => {
+                        popupEl.classList.remove(popupShowClass);
+                        popupEl.children[0].classList.remove(clipShowClass);
+                        popupEl.children[1].classList.remove(checkShowClass);
+                    });
                 }, function (err) {
                     console.error('Async: Could not copy text: ', err);
                 });

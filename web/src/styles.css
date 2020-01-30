@@ -8,14 +8,14 @@
 
 html {
     font-family: sans-serif;
-    font-size: 12px;
+    font-size: 10px;
     color: rgba(255, 255, 255, 0.9);
     background-color: #1F2833;
 }
 
 @media screen and (min-width: 320px) {
     html {
-        font-size: calc(12px + (25 - 12) * ((100vw - 320px) / 680));
+        font-size: calc(10px + (25 - 10) * ((100vw - 320px) / 680));
     }
 }
 
@@ -33,6 +33,7 @@ html {
     position: relative;
     margin-top: 200px;
     margin-bottom: 200px;
+    text-align: center;
 }
 
 h1 {
@@ -52,7 +53,33 @@ h1.hidden {
 
 #popup {
     position: absolute;
+    height: 1rem;
+    width: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#popup div {
+    position: absolute;
     opacity: 0;
+}
+
+.popup-show {
+    animation-name: popupShow;
+}
+
+.clip-show {
+    animation-name: clipShow;
+}
+
+#check {
+    font-size: 0.5rem;
+}
+
+.check-show {
+    animation-name: checkShow;
 }
 
 
@@ -68,26 +95,23 @@ h1.hidden {
     align-items: center;
     justify-content: center;
     font-family: Open Sans, "sans-serif";
-    height: var(--categorySize);
-    width: var(--categorySize);
+    height: 7rem;
+    width: 7rem;
     border: 3px solid rgba(255, 255, 255, 0.9);
     margin: 20px;
     transition: background-color 0.2s;
+    font-size: 1rem;
 }
 
 .category .icon {
-    font-size: 50px;
+    font-size: 2em;
     margin-bottom: 0.5em;
 }
 
 .category .icon svg {
     fill: rgba(255, 255, 255, 0.9);
-    height: 50px;
-    width: 50px;
-}
-
-.category .title {
-    font-size: 30px;
+    height: 2rem;
+    width: 2rem;
 }
 
 .category:hover {
@@ -109,11 +133,6 @@ h1.hidden {
 .fade-out-down {
     opacity: 0;
     animation-name: fadeOutDown;
-    animation-duration: var(--animationDuration);
-}
-
-.popup-show {
-    animation-name: popupShow;
     animation-duration: var(--animationDuration);
 }
 
@@ -194,15 +213,40 @@ h1.hidden {
 
 @keyframes popupShow {
     0% {
-        opacity: 0;
         transform: translate3d(0, -100%, 0);
     }
     50% {
-        opacity: 1;
         transform: translate3d(0, -220%, 0);
     }
     100% {
+        transform: translate3d(0, -220%, 0);
+    }
+}
+
+@keyframes clipShow {
+    0% {
         opacity: 0;
-        transform: translate3d(0, -100%, 0);
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes checkShow {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 0, 0);
+    }
+    50% {
+        opacity: 0;
+        transform: translate3d(0, 0, 0);
+    }
+    60% {
+        opacity: 1;
+        transform: translate3d(0, -200%, 0);
+    }
+    100% {
+        opacity: 0;
+        transform: translate3d(0, -200%, 0);
     }
 }
