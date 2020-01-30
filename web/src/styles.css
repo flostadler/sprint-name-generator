@@ -80,6 +80,12 @@ h1.hidden {
     margin-bottom: 0.5em;
 }
 
+.category .icon svg {
+    fill: rgba(255, 255, 255, 0.9);
+    height: 50px;
+    width: 50px;
+}
+
 .category .title {
     font-size: 30px;
 }
