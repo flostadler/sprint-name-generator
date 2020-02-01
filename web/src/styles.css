@@ -87,6 +87,7 @@ h1.hidden {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .category {
@@ -98,7 +99,7 @@ h1.hidden {
     height: 7rem;
     width: 7rem;
     border: 3px solid rgba(255, 255, 255, 0.9);
-    margin: 20px;
+    margin: 0.6rem;
     transition: background-color 0.2s;
     font-size: 1rem;
 }
