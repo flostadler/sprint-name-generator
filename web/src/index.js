@@ -53,7 +53,6 @@ document.addEventListener('DOMContentLoaded', function () {
          * {
          *     text: string;
          *     animationDurationMs: number;
-         *     animationDelay: number;
          *     animationTiming: "ease|linear";
          *     copyToClipboard: boolean;
          * }
@@ -99,7 +98,6 @@ document.addEventListener('DOMContentLoaded', function () {
             newTextEl.textContent = textObject.text;
             rootEl.appendChild(newTextEl);
 
-            await timeout(textObject.animationDelayMs);
             //hiding current text el
             let currentTextEl = getCurrentTextEl();
             currentTextEl.classList.add(`${durationClassPrefix}${textObject.animationDurationMs}`);
@@ -227,13 +225,6 @@ document.addEventListener('DOMContentLoaded', function () {
             .getElementsByClassName("category game-of-thrones")[0]
             .addEventListener("click", generateNames(NameGenerator.got), false);
 
-        addToQueue([
-            {
-                text: "PICK A CATEGORY",
-                animationDurationMs: 1000,
-                animationDelayMs: 1000,
-            },
-        ]);
 
         let popupEl = document.getElementById('popup');
 
@@ -257,5 +248,15 @@ document.addEventListener('DOMContentLoaded', function () {
             };
         }
 
+        setTimeout( () => {
+            if(!queue.length){
+                addToQueue([
+                    {
+                        text: "PICK A CATEGORY",
+                        animationDurationMs: 500,
+                    },
+                ]);
+            }
+        }, 1000);
     });
 });
