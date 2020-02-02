@@ -11,11 +11,20 @@ html {
     font-size: 10px;
     color: rgba(255, 255, 255, 0.9);
     background-color: #1F2833;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media screen and (min-width: 320px) {
     html {
         font-size: calc(10px + (25 - 10) * ((100vw - 320px) / 680));
+    }
+}
+@media screen and (max-width: 1070px) and (max-height: 700px) {
+    .category {
+        height: 5rem !important;
+        width: 5rem !important;
     }
 }
 
@@ -31,8 +40,7 @@ html {
     justify-content: center;
     flex-direction: column;
     position: relative;
-    margin-top: 200px;
-    margin-bottom: 200px;
+    margin-bottom: 5rem;
     text-align: center;
 }
 
