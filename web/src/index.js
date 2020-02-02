@@ -13,26 +13,6 @@ const animationTiming = {
     LINEAR: 'linear',
 };
 
-/**
- * looks:
- * SPRINT NAME GEN FADES IN + OUT
- * CHOOSE A CATEGORY FADES IN
- * BUTTONS FADE IN
- *
- *
- * animations:
- * add all texts to queue and use a method which runs queue
- * overlap of animations should be possible, so that slot machine effect looks better
- *
- */
-
-/**
- * todos:
- * - ---copy clipboard confirmation----
- * - buttons fade in with "select category"
- * - GitHub Link
- */
-
 document.addEventListener('DOMContentLoaded', function () {
     if (!WebAssembly.instantiateStreaming) { // polyfill
         WebAssembly.instantiateStreaming = async (resp, importObject) => {
