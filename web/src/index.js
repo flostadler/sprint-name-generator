@@ -238,5 +238,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 ]);
             }
         }, 1000);
+
+        // fade in buttons via javascript to make sure wasm is loaded
+        let categoriesDiv = document.getElementsByClassName('categories')[0];
+        categoriesDiv.style.opacity = 1;
+        categoriesDiv.classList.add('fade-in-up');
     });
 });
