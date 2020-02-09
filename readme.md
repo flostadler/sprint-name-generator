@@ -1,8 +1,9 @@
 # Sprint-Name-Generator
 [Sprint Name Generator](https://sprintnamegenerator.com)
 
-## Building
-tbd
+Built by: 
+- [Florian Stadler](https://github.com/flostadler) - Go
+- [Wolfgang Ederer](https://github.com/wederer) - Frontend
 
 ## Usage
 Start the container: `docker run -p 80 -d sprint-name-generator`
