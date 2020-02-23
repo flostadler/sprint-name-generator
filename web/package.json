@@ -24,7 +24,6 @@
     "webpack-dev-server": "^3.7.2"
   },
   "scripts": {
-    "start": "echo TODODODODODODO",
     "start:dev": "webpack-dev-server --open",
     "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"

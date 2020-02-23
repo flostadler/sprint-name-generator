@@ -300,3 +300,19 @@ h1.hidden {
         transform: translate3d(0, -200%, 0);
     }
 }
+
+footer {
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 24px;
+    font-size: 1.75rem;
+    cursor: pointer;
+}
+footer a{
+    text-decoration: inherit;
+    color: inherit;
+}
+footer a:visited{
+    text-decoration: inherit;
+    color: inherit;
+}
