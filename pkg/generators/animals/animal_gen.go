@@ -117,7 +117,7 @@ var(
 		"Swine",
 		"Platypus",
 		"Porcupine",
-		"Prairie",
+		"Prairie Dog",
 		"Pug",
 		"Rabbit",
 		"Raccoon",
