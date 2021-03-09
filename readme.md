@@ -2,7 +2,7 @@
 [Sprint Name Generator](https://sprintnamegenerator.com)
 
 Built by: 
-- [Florian Stadler](https://github.com/flostadler) - Go
+- [Florian Stadler](https://github.com/flostadler) - Go -> Wasm
 - [Wolfgang Ederer](https://github.com/wederer) - Frontend
 
 ## Usage
