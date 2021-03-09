@@ -28,7 +28,6 @@ var(
 		"Butterfly",
 		"Camel",
 		"Carabao",
-		"Water",
 		"Caribou",
 		"Cat",
 		"Cattle",
