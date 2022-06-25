@@ -204,6 +204,9 @@ document.addEventListener('DOMContentLoaded', function () {
         document
             .getElementsByClassName("category game-of-thrones")[0]
             .addEventListener("click", generateNames(NameGenerator.got), false);
+         document
+            .getElementsByClassName("category harry-potter")[0]
+            .addEventListener("click", generateNames(NameGenerator.hp), false);
 
 
         let popupEl = document.getElementById('popup');

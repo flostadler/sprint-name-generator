@@ -6,6 +6,7 @@ Built by:
 - [Wolfgang Ederer](https://github.com/wederer) - Frontend
 
 ## Usage
+Build the container: `docker build -t sprint-name-generator -f build/package/Dockerfile .`
 Start the container: `docker run -p 80 -d sprint-name-generator`
 
 ## Images

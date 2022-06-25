@@ -8,6 +8,7 @@ import (
 	"github.com/flostadler/name-generator/pkg/generators/docker"
 	"github.com/flostadler/name-generator/pkg/generators/got"
 	"github.com/flostadler/name-generator/pkg/generators/marvel"
+	"github.com/flostadler/name-generator/pkg/generators/hp"
 	"syscall/js"
 )
 
@@ -29,6 +30,9 @@ func main() {
 	}))
 	gen.Set("got", js.FuncOf(func (this js.Value, inputs []js.Value) interface{} {
 		return got.Generate()
+	}))
+	gen.Set("hp", js.FuncOf(func (this js.Value, inputs []js.Value) interface{} {
+		return hp.Generate()
 	}))
 
 	js.Global().Set("NameGenerator", gen)
