@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    - name: Set up Go 1.13
+    - name: Set up Go 1.18
       uses: actions/setup-go@v1
       with:
-        go-version: 1.13
+        go-version: 1.18
       id: go
 
     - name: Check out code into the Go module directory
@@ -36,10 +36,10 @@ jobs:
     - name: Copy wasm_exec
       run: cp $GOROOT/misc/wasm/wasm_exec.js web/wasm_exec.js
       
-    - name: Use Node.js 12.x
+    - name: Use Node.js 18.x
       uses: actions/setup-node@v1
       with:
-        node-version: 12.x
+        node-version: 18.x
 
     - run: npm install
       working-directory: ./web
