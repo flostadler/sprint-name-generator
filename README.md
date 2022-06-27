@@ -35,7 +35,8 @@ docker build -t sprint-name-generator -f build/package/Dockerfile .
 
 ### Run latest image from Docker Hub
 ``` bash
-
+docker pull guidemetothemoon/sprint-name-generator:[image_tag]
+docker run -dp 3006:80  guidemetothemoon/sprint-name-generator:[image_tag]
 ```
 
 ## Images
