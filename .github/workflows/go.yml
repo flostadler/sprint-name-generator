@@ -31,13 +31,13 @@ jobs:
         fi
 
     - name: Build api
-      run: go build -v -o main cmd/name-generator
+      run: go build -v -o main ${{ github.workspace }}/cmd/name-generator
 
     - name: Build wasm
-      run: GOOS=js GOARCH=wasm go build -o web/generator.wasm cmd/web
+      run: GOOS=js GOARCH=wasm go build -o web/generator.wasm ${{ github.workspace }}/cmd/web
       
     - name: Copy wasm_exec
-      run: cp $GOROOT/misc/wasm/wasm_exec.js web/wasm_exec.js
+      run: cp $GOROOT/misc/wasm/wasm_exec.js ${{ github.workspace }}/web/wasm_exec.js
       
     - name: Use Node.js 18.x
       uses: actions/setup-node@v1
@@ -45,10 +45,10 @@ jobs:
         node-version: 18.x
 
     - run: npm install
-      working-directory: ./web
+      working-directory: ${{ github.workspace }}/web
       
     - run: npm run build --if-present
-      working-directory: ./web
+      working-directory: ${{ github.workspace }}/web
       env:
         CI: true
     
@@ -59,7 +59,7 @@ jobs:
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
           
     - name: Build Docker image
-      run: docker build . -f docker/Dockerfile -t ${{ env.IMAGE_NAME }}/sprint-name-generator:${{github.run_number}}
+      run: docker build . -f ${{ github.workspace }}/build/package/Dockerfile -t ${{ env.IMAGE_NAME }}/sprint-name-generator:${{github.run_number}}
 
     - name: Run container image security scan
       uses: Azure/container-scan@v0
@@ -82,5 +82,5 @@ jobs:
       with:
         SSH: true
         BRANCH: gh-pages
-        FOLDER: web/build
+        FOLDER: ${{ github.workspace }}/web/build
       if: ${{ false }}
