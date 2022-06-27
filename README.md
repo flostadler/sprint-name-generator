@@ -40,4 +40,6 @@ docker build -t sprint-name-generator -f build/package/Dockerfile .
 
 ## Images
 
-Prebuilt image available at [Dockerhub](https://hub.docker.com/r/flostadler/name-generator)
+Original prebuilt image available at [Dockerhub](https://hub.docker.com/r/flostadler/name-generator)
+
+Updated, newest image available at [guidemetothemoon/sprint-name-generator](https://hub.docker.com/r/guidemetothemoon/sprint-name-generator)
