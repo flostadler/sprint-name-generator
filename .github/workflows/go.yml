@@ -39,10 +39,10 @@ jobs:
     - name: Copy wasm_exec
       run: cp $GOROOT/misc/wasm/wasm_exec.js ${{ github.workspace }}/web/wasm_exec.js
       
-    - name: Use Node.js 18.x
+    - name: Use Node.js 14.x
       uses: actions/setup-node@v1
       with:
-        node-version: 18.x
+        node-version: 14.x
 
     - run: npm install
       working-directory: ${{ github.workspace }}/web
