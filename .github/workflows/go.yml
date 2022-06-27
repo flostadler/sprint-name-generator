@@ -28,10 +28,10 @@ jobs:
         fi
 
     - name: Build api
-      run: go build -v -o name-gen github.com/flostadler/name-generator/cmd/name-generator
+      run: go build -v -o main cmd/name-generator
 
     - name: Build wasm
-      run: GOOS=js GOARCH=wasm go build -o web/generator.wasm github.com/flostadler/name-generator/cmd/web
+      run: GOOS=js GOARCH=wasm go build -o web/generator.wasm cmd/web
       
     - name: Copy wasm_exec
       run: cp $GOROOT/misc/wasm/wasm_exec.js web/wasm_exec.js
@@ -72,10 +72,12 @@ jobs:
       uses: webfactory/ssh-agent@v0.4.1
       with:
         ssh-private-key: ${{ secrets.DEPLOY_KEY }}
-    
+      if: ${{ false }}
+
     - name: Deploy Page
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
         SSH: true
         BRANCH: gh-pages
         FOLDER: web/build
+      if: ${{ false }}
