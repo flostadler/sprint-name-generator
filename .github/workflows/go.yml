@@ -75,7 +75,6 @@ jobs:
       uses: webfactory/ssh-agent@v0.4.1
       with:
         ssh-private-key: ${{ secrets.DEPLOY_KEY }}
-      if: ${{ false }}
 
     - name: Deploy Page
       uses: JamesIves/github-pages-deploy-action@releases/v3
@@ -83,4 +82,3 @@ jobs:
         SSH: true
         BRANCH: gh-pages
         FOLDER: ${{ github.workspace }}/web/build
-      if: ${{ false }}
