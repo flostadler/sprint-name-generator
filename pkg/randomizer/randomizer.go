@@ -1,9 +1,9 @@
 package randomizer
 
 import (
-	"github.com/docker/docker/pkg/random"
+	"math/rand"
 )
 
 func GetRandom(values []string) string {
-	return values[random.Rand.Intn(len(values))]
+	return values[rand.Intn(len(values))]
 }
