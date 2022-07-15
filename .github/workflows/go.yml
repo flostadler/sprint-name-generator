@@ -71,14 +71,14 @@ jobs:
     - name: Push Docker image
       run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/sprint-name-generator:${{github.run_number}}
 
-    - name: Install SSH Client
-      uses: webfactory/ssh-agent@v0.4.1
-      with:
-        ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+#     - name: Install SSH Client
+#       uses: webfactory/ssh-agent@v0.4.1
+#       with:
+#         ssh-private-key: ${{ secrets.DEPLOY_KEY }}
 
     - name: Deploy Page
-      uses: JamesIves/github-pages-deploy-action@releases/v3
+      uses: JamesIves/github-pages-deploy-action@releases/v4
       with:
-        SSH: true
-        BRANCH: gh-pages
-        FOLDER: ${{ github.workspace }}/web/build
+#         SSH: true
+        branch: gh-pages
+        folder: ${{ github.workspace }}/web/build
