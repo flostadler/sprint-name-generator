@@ -59,17 +59,17 @@ jobs:
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
           
     - name: Build Docker image
-      run: docker build . -f ${{ github.workspace }}/build/package/Dockerfile -t ${{ env.IMAGE_NAME }}/sprint-name-generator:${{github.run_number}}
+      run: docker build . -f ${{ github.workspace }}/build/package/Dockerfile -t ${{ secrets.DOCKER_HUB_USERNAME }}/sprint-name-generator:${{github.run_number}}
 
     - name: Run container image security scan
       uses: Azure/container-scan@v0
       with:
-        image-name: ${{ env.IMAGE_NAME }}/sprint-name-generator:${{github.run_number}}
+        image-name: ${{ secrets.DOCKER_HUB_USERNAME }}/sprint-name-generator:${{github.run_number}}
         severity-threshold: CRITICAL
         run-quality-checks: true
         
     - name: Push Docker image
-      run: docker push ${{ env.IMAGE_NAME }}/sprint-name-generator:${{github.run_number}}
+      run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/sprint-name-generator:${{github.run_number}}
 
     - name: Install SSH Client
       uses: webfactory/ssh-agent@v0.4.1
