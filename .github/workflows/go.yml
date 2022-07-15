@@ -9,7 +9,7 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     env:
-      IMAGE_NAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+      IMAGE_NAME: ${{ secrets.DOCKER_HUB_USERNAME }}/sprint-name-generator:${{github.run_number}}
       
     steps:
 
@@ -59,26 +59,21 @@ jobs:
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
           
     - name: Build Docker image
-      run: docker build . -f ${{ github.workspace }}/build/package/Dockerfile -t ${{ secrets.DOCKER_HUB_USERNAME }}/sprint-name-generator:${{github.run_number}}
+      run: docker build . -f ${{ github.workspace }}/build/package/Dockerfile -t ${{ env.IMAGE_NAME }}
 
+# Seems to always fail with 'unknown manifest', as if it couldn't access the image that was built in the step before - future me problem
 #     - name: Run container image security scan
 #       uses: Azure/container-scan@v0
 #       with:
-#         image-name: ${{ secrets.DOCKER_HUB_USERNAME }}/sprint-name-generator:${{github.run_number}}
+#         image-name: ${{ env.IMAGE_NAME }}
 #         severity-threshold: CRITICAL
 #         run-quality-checks: true
         
     - name: Push Docker image
-      run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/sprint-name-generator:${{github.run_number}}
-
-#     - name: Install SSH Client
-#       uses: webfactory/ssh-agent@v0.4.1
-#       with:
-#         ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+      run: docker push ${{ env.IMAGE_NAME }}
 
     - name: Deploy Page
       uses: JamesIves/github-pages-deploy-action@releases/v4
       with:
-#         SSH: true
         branch: gh-pages
         folder: ${{ github.workspace }}/web/build
