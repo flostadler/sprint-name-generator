@@ -9,7 +9,7 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     env:
-      IMAGE_NAME: ${{ secrets.DOCKER_HUB_USERNAME }}/sprint-name-generator:${{github.run_number}}
+      IMAGE_NAME: ${{ secrets.DOCKER_HUB_USERNAME }}/sprint-name-generator
       
     steps:
 
@@ -59,7 +59,7 @@ jobs:
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
           
     - name: Build Docker image
-      run: docker build . -f ${{ github.workspace }}/build/package/Dockerfile -t ${{ env.IMAGE_NAME }}
+      run: docker build . -f ${{ github.workspace }}/build/package/Dockerfile -t ${{ env.IMAGE_NAME }}:${{github.run_number}} -t ${{ env.IMAGE_NAME }}:latest
 
 # Seems to always fail with 'unknown manifest', as if it couldn't access the image that was built in the step before - future me problem
 #     - name: Run container image security scan
@@ -69,8 +69,11 @@ jobs:
 #         severity-threshold: CRITICAL
 #         run-quality-checks: true
         
-    - name: Push Docker image
-      run: docker push ${{ env.IMAGE_NAME }}
+    - name: Push versioned Docker image
+      run: docker push ${{ env.IMAGE_NAME }}:${{github.run_number}}
+      
+    - name: Push latest Docker versioned image
+      run: docker push ${{ env.IMAGE_NAME }}:latest
 
     - name: Deploy Page
       uses: JamesIves/github-pages-deploy-action@releases/v4
