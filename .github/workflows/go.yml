@@ -61,12 +61,12 @@ jobs:
     - name: Build Docker image
       run: docker build . -f ${{ github.workspace }}/build/package/Dockerfile -t ${{ secrets.DOCKER_HUB_USERNAME }}/sprint-name-generator:${{github.run_number}}
 
-    - name: Run container image security scan
-      uses: Azure/container-scan@v0
-      with:
-        image-name: flostadler/sprint-name-generator:${{github.run_number}}
-        severity-threshold: CRITICAL
-        run-quality-checks: true
+#     - name: Run container image security scan
+#       uses: Azure/container-scan@v0
+#       with:
+#         image-name: ${{ secrets.DOCKER_HUB_USERNAME }}/sprint-name-generator:${{github.run_number}}
+#         severity-threshold: CRITICAL
+#         run-quality-checks: true
         
     - name: Push Docker image
       run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/sprint-name-generator:${{github.run_number}}
