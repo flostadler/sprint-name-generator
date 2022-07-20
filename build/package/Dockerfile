@@ -1,4 +1,3 @@
-FROM nginx:stable
+FROM nginx:1.23.1-alpine
 COPY web/build /usr/share/nginx/html/
-RUN apt-get --only-upgrade install curl
 EXPOSE 80
