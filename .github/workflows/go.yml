@@ -81,4 +81,3 @@ jobs:
       with:
         branch: gh-pages
         folder: ${{ github.workspace }}/web/build
-      if: ${{ false }}
