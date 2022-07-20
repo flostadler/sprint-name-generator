@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       IMAGE_NAME: ${{ secrets.DOCKER_HUB_USERNAME }}/sprint-name-generator
+      # See https://github.com/Azure/container-scan/issues/146
+      DOCKLE_HOST: "unix:///var/run/docker.sock"
       
     steps:
 
@@ -61,11 +63,10 @@ jobs:
     - name: Build Docker image
       run: docker build . -f ${{ github.workspace }}/build/package/Dockerfile -t ${{ env.IMAGE_NAME }}:${{github.run_number}} -t ${{ env.IMAGE_NAME }}:latest
 
-# Seems to always fail with 'unknown manifest', as if it couldn't access the image that was built in the step before - future me problem
     - name: Run container image security scan
       uses: Azure/container-scan@v0.1
       with:
-        image-name: ${{ env.IMAGE_NAME }}:latest
+        image-name: ${{ env.IMAGE_NAME }}:${{github.run_number}}
         severity-threshold: CRITICAL
         run-quality-checks: true
         
