@@ -63,7 +63,7 @@ jobs:
 
 # Seems to always fail with 'unknown manifest', as if it couldn't access the image that was built in the step before - future me problem
     - name: Run container image security scan
-      uses: Azure/container-scan@v0
+      uses: Azure/container-scan@v0.1
       with:
         image-name: ${{ env.IMAGE_NAME }}:latest
         severity-threshold: CRITICAL
